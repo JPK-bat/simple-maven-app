@@ -1,7 +1,8 @@
 pipeline {
     agent {
-        node {
-            label 'docker-agent-alpine'
+        docker {
+            image 'maven:3.9.9-eclipse-temurin-17'
+            args '--network jenkins'
         }
     }
 
