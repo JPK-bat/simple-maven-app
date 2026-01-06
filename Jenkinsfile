@@ -38,5 +38,13 @@ pipeline {
                 sh 'mvn clean install'
             }
         }
+        stage('Archive') {
+            steps {
+                echo "Archiving..."
+                sh '''
+                cd simple-maven-app
+                archiveArtifacts artifacts: '/target/*.jar'
+            }
+        }
     }
 }
