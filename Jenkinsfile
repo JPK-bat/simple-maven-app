@@ -13,9 +13,9 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
+        stage('Test') {
             steps {
-                echo "Building and Testing..."
+                echo "Testing..."
                 sh '''
                 cd simple-maven-app
                 sh 'mvn clean test'
@@ -28,6 +28,14 @@ pipeline {
                 sh '''
                 cd simple-maven-app
                 sh 'mvn clean package'
+            }
+        }
+        stage('Maven Build') {
+            steps {
+                echo "Building..."
+                sh '''
+                cd simple-maven-app
+                sh 'mvn clean install'
             }
         }
     }
